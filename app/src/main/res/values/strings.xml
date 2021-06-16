@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Walls</string>
+    <string name="hello">hello</string>
+    <string name="bestie">Best of the month</string>
+    <string name="cate">Categories</string>
+    <string name="hint">Find Wallpaper..</string>
+    <string name="dummy_results">35 wallpaper found</string>
+    <string name="query">query</string>
+</resources>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_color"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/edit_text"
+                android:drawableEnd="@drawable/ic_baseline_search_24"
+                android:elevation="0.5dp"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/hint"
+                android:padding="15dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/disable"
+                style="@style/EditTextEntry"
+                android:inputType="text"
+                />
+
+            <TextView
+                android:id="@+id/heading_best"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/bestie"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/bestwall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                />
+
+
+            <TextView
+                android:id="@+id/Categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/cate"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categories_recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                />
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

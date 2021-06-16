@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Walls" parent="Theme.MaterialComponents.NoActionBar"
+        >
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/primary</item>
+        <item name="colorSecondaryVariant">@color/primary</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/bg1</item>
+
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="EditTextEntry" parent="editTextEntry">
+        <item name="android:maxLines">1</item>
+        <item name="android:lines">1</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="editTextEntry" />
+    <style name="ShapeAppearanceOverlay.App.CornerSize5Percent" parent="">
+        <item name="cornerSize">5%</item>
+    </style>
+    <style name="ShapeAppearanceOverlay.App.CornerSize20Percent" parent="">
+        <item name="cornerSize">15%</item>
+    </style>
+    <style name="FullScreen" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>
