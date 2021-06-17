@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_color">
+    android:background="@drawable/background_color"
+    android:layout_marginTop="20dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,11 +42,15 @@
                 android:text="@string/dummy_results"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/query_recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                />
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/query_recycler"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

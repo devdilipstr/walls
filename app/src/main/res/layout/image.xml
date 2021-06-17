@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/img_test" />
+        android:src="@drawable/img_test"
+        android:contentDescription="@string/image" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +17,7 @@
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:orientation="horizontal">
-        <androidx.appcompat.widget.AppCompatImageButton
+        <ImageButton
             android:id="@+id/back_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,7 +27,7 @@
             android:layout_margin="20dp"
             android:tint="@color/white"
             />
-        <androidx.appcompat.widget.AppCompatImageButton
+        <ImageButton
             android:id="@+id/download_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,8 +37,8 @@
             android:layout_margin="20dp"
             android:tint="@color/white"
             />
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:layoutDirection="@+id/set_btn"
+        <ImageButton
+            android:id="@+id/set_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_done_all_24"

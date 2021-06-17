@@ -28,8 +28,8 @@
     <style name="ShapeAppearanceOverlay.App.CornerSize20Percent" parent="">
         <item name="cornerSize">15%</item>
     </style>
-    <style name="FullScreen" parent="Theme.MaterialComponents.NoActionBar">
-        <item name="windowActionBar">false</item>
+    <style name="FullScreen" parent="@style/Theme.AppCompat.NoActionBar">
         <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 </resources>

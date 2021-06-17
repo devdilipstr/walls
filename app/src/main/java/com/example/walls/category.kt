@@ -1,3 +1,5 @@
 package com.example.walls
 
-data class category(val id:String, val imgurl:String,val name:String)
+import java.util.*
+
+data class category(val id:String, val cover_photo:Image,val title:String)
