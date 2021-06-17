@@ -11,41 +11,40 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import org.w3c.dom.Text
-import java.lang.reflect.Type
 
-class categoryAdapter(val context:Context,val list:MutableList<category>): RecyclerView.Adapter<categoryAdapter.categoryViewHolder>() {
-    class categoryViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
-        val category_id = itemView.findViewById<TextView>(R.id.category_id)
-        val category_img= itemView.findViewById<ImageView>(R.id.category_img)
-        val category_text = itemView.findViewById<TextView>(R.id.category_text)
+@Suppress("DEPRECATION")
+class CategoryAdapter(private val context:Context, private val list:MutableList<Category>): RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+    class CategoryViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
+        val categoryid:TextView = itemView.findViewById(R.id.category_id)
+        val categoryimg:ImageView= itemView.findViewById(R.id.category_img)
+        val categorytext:TextView= itemView.findViewById(R.id.category_text)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): categoryViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view:View = inflater.inflate(R.layout.category_layout,parent,false)
-        return categoryViewHolder(view).listen{position, type ->
-            val item = list.get(position)
+        return CategoryViewHolder(view).listen{position->
+            val item = list[position]
             val intent = Intent(parent.context,SearchActivity::class.java)
             intent.putExtra("query",item.title)
             startActivity(parent.context,intent,Bundle.EMPTY)
         }
     }
 
-    override fun onBindViewHolder(holder: categoryViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val data =  list[position]
-        holder.category_id.text = data.id
+        holder.categoryid.text = data.id
         val urls = data.cover_photo.urls
-        Glide.with(context).load(urls.get("thumb")).into(holder.category_img)
-        holder.category_text.text = data.title
+        Glide.with(context).load(urls["thumb"]).into(holder.categoryimg)
+        holder.categorytext.text = data.title
     }
 
     override fun getItemCount(): Int {
         return list.size
     }
-    fun <T:RecyclerView.ViewHolder> T.listen(event:(position:Int,type:Int)->Unit) :T{
+    private fun <T:RecyclerView.ViewHolder> T.listen(event:(position:Int)->Unit) :T{
         itemView.setOnClickListener{
-            event.invoke(adapterPosition, itemViewType)
+            event.invoke(adapterPosition)
         }
         return this
     }

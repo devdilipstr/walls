@@ -7,4 +7,5 @@
     <string name="dummy_results">35 wallpaper found</string>
     <string name="query">query</string>
     <string name="image">image</string>
+    <string name="loadmorebtn">Load more</string>
 </resources>

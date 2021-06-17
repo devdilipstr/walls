@@ -71,6 +71,7 @@
                 android:id="@+id/categories_recycler"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:isScrollContainer="false"
                 />
         </LinearLayout>
 

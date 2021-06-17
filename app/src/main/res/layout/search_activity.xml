@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_color"
-    android:layout_marginTop="20dp">
+    >
 
     <ScrollView
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="21dp"
@@ -31,7 +32,7 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:text="@string/query"
                 android:textColor="@color/black"
-                android:textSize="30sp" />
+                android:textSize="45sp" />
 
             <TextView
                 android:id="@+id/results"
@@ -41,13 +42,24 @@
                 android:fontFamily="@font/poppins"
                 android:text="@string/dummy_results"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/query_recycler"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 />
+            <Button
+                android:id="@+id/loadmore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/loadmorebtn"
+                android:textAllCaps="false"
+                android:background="@drawable/edit_text"
+                android:elevation="0dp"
+                android:layout_gravity="center"
+                />
+
         </LinearLayout>
 
 

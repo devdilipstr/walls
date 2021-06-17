@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:tint="#36000000"
+        android:tint="#40000000"
         app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize20Percent"
         android:src="@drawable/img_test">
 
@@ -20,14 +20,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="19dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="32dp"
+        android:ellipsize="end"
         android:fontFamily="@font/poppins"
         android:text="@string/hello"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="30sp"
-        android:ellipsize="end"
-        />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/category_id"

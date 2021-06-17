@@ -2,9 +2,8 @@ package com.example.walls
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -13,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 
@@ -31,23 +33,16 @@ class MainActivity : AppCompatActivity() {
         categories = findViewById(R.id.categories_recycler)
         searchbar =  findViewById(R.id.search_bar)
         //best_recycler
-        val image  = Image("dsfsdf", mutableMapOf<String,String>("full" to "https://images.unsplash.com/photo-1564512480295-86e479d9b87c?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb", "thumb" to "https://images.unsplash.com/photo-1564512480295-86e479d9b87c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max"))
-        val list = mutableListOf<Image>(image,image,image)
-        bestwall.adapter = WallAdapter(list)
-        bestwall.layoutManager = LinearLayoutManager(this,LinearLayout.HORIZONTAL,false)
-
+        getbestimagelist()
         //category_recycler
-        val category  = category("sdfdsf",image,"Nature")
-        val category_list = mutableListOf<category>(category,category,category)
-        categories.adapter = categoryAdapter(this,category_list)
-        categories.layoutManager = GridLayoutManager(this,2)
-        categories.addItemDecoration(GridDecoration(2,45,true))
+        getcategories()
+
 
         // search bar
         searchbar.setOnEditorActionListener{v,actionId,event->
             if(actionId == EditorInfo.IME_ACTION_SEARCH){
-                if(searchbar.text.toString() !== "null" ){
-                    var intent = Intent(this,SearchActivity::class.java)
+                if(searchbar.text.length != 0){
+                    val intent = Intent(this,SearchActivity::class.java)
                     intent.putExtra("query",searchbar.text.toString())
                     startActivity(intent)
                 }else{
@@ -58,5 +53,45 @@ class MainActivity : AppCompatActivity() {
                 false
             }
         }
+    }
+
+    private fun getcategories() {
+        val getcategory = RetroFetchObject.retrofetch.getCollection()
+        getcategory.enqueue(object:Callback<MutableList<Category>>{
+            override fun onResponse(
+                call: Call<MutableList<Category>>,
+                response: Response<MutableList<Category>>
+            ) {
+                val category_list:MutableList<Category>? = response.body()
+                categories.adapter = CategoryAdapter(this@MainActivity,category_list!!)
+                categories.layoutManager = GridLayoutManager(this@MainActivity,2)
+                categories.addItemDecoration(GridDecoration(2,45,true))
+            }
+
+            override fun onFailure(call: Call<MutableList<Category>>, t: Throwable) {
+                Log.i("errror","error")
+            }
+
+        })
+    }
+
+    private fun getbestimagelist() {
+        val bestwalls = RetroFetchObject.retrofetch.getBestWalls()
+        bestwalls.enqueue(object:Callback<MutableList<Image>>{
+            @SuppressLint("WrongConstant")
+            override fun onResponse(
+                call: Call<MutableList<Image>>,
+                response: Response<MutableList<Image>>
+            ) {
+                val list: MutableList<Image>? = response.body()
+                bestwall.adapter = WallAdapter(this@MainActivity,list!!,R.layout.wallthumb)
+                bestwall.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayout.HORIZONTAL,false)
+            }
+
+            override fun onFailure(call: Call<MutableList<Image>>, t: Throwable) {
+                Log.i("error",t.toString())
+            }
+
+        })
     }
 }
